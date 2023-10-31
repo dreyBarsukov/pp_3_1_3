@@ -27,12 +27,8 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public Optional<User> findOne(long id) {
-        try {
-            return Optional.of(Optional.ofNullable(entityManager.find(User.class, id)).orElseThrow());
-        } catch (NoSuchElementException e) {
-            throw e;
-        }
+    public User findOne(long id) {
+        return Optional.ofNullable(entityManager.find(User.class, id)).orElseThrow();
     }
 
     @Override
@@ -59,10 +55,6 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void delete(long id) {
-        try {
-            entityManager.remove(findOne(id).get());
-        } catch (NoSuchElementException e) {
-            throw e;
-        }
+        entityManager.remove(findOne(id));
     }
 }
