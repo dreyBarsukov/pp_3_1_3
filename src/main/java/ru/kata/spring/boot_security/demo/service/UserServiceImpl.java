@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Transactional(readOnly = true)
     public User findOne(long id) {
-        return userDao.findOne(id).get();
+        return userDao.findOne(id);
     }
 
     @Override
