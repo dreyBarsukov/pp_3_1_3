@@ -6,25 +6,35 @@
     <title>New user</title>
 </head>
 <body>
-    <form th:method="POST" th:action="@{/admin/users/new}" th:object="${user}">
-        <label for="firstName">Enter first name</label>
-        <input type="text" th:field="*{firstName}"/>
-        <div style="color:red" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Name error</div>
-        <br/>
-        <label for="password">Enter password</label>
-        <input type="text" th:field="*{password}"/>
-        <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name error</div>
-        <br/>
-        <label for="lastName">last name</label>
-        <input type="text" th:field="*{lastName}"/>
-        <div style="color:red" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Name error</div>
-        <br/>
-        <label for="email">email </label>
-        <input type="text" th:field="*{email}"/>
-        <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Name error</div>
-        <br/>
-        <input type="submit" value="create">
-    </form>
-    <a th:href="@{/logout}">Logout</a>
+<form th:method="POST" th:action="@{/admin/users/new}" th:object="${user}">
+    <label for="firstName">Enter first name</label>
+    <input type="text" th:field="*{firstName}"/>
+    <div style="color:red" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Name error</div>
+    <br/>
+    <label for="password">Enter password</label>
+    <input type="text" th:field="*{password}"/>
+    <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name error</div>
+    <br/>
+    <label for="lastName">last name</label>
+    <input type="text" th:field="*{lastName}"/>
+    <div style="color:red" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Name error</div>
+    <br/>
+    <label for="email">email </label>
+    <input type="text" th:field="*{email}"/>
+    <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Name error</div>
+    <br/>
+    <label>Select role:
+        <div class="checkbox-container"
+             th:each="role : ${roles}">
+            <input type="checkbox"
+                   th:name="ids"
+                   th:value="${role.getName()}"
+                   th:id="${'role'+role.getId()}"/>
+            <label th:for="${'role'+role.getId()}" th:text="${role.getName()}"></label>
+        </div>
+    </label>
+    <input type="submit" value="create">
+</form>
+<a th:href="@{/logout}">Logout</a>
 </body>
 </html>

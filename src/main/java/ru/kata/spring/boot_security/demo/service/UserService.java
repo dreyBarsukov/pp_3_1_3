@@ -11,11 +11,9 @@ public interface UserService {
 
     User findOne(long id);
 
-    User findByName(String name);
+    void save(User user, List<String> roles);
 
-    void save(User user);
-
-    void update(long id, User updeteUser);
+    void update(long id, User updeteUser, List<String> roles);
 
     void delete(long id);
 }

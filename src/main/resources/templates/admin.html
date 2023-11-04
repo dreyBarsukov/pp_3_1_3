@@ -13,6 +13,7 @@
             <th>first name</th>
             <th>last name</th>
             <th>email</th>
+            <th>password</th>
             <th>Delete</th>
         </tr>
         <tr>
@@ -20,6 +21,7 @@
             <td th:utext="${user.getFirstName()}">...</td>
             <td th:utext="${user.getLastName()}">...</td>
             <td th:utext="${user.getEmail()}">...</td>
+            <td th:utext="${user.getPassword()}">...</td>
             <td>
                 <div>
                     <a th:href="@{/admin/users/edit(id=${user.getId()})}">Edit</a>
@@ -31,9 +33,6 @@
         </tr>
     </table>
     <div/>
-    <form th:method="GET" th:action="@{/admin/users/new}">
-        <input type="submit" value="new user"/>
-        <form/>
         <a th:href="@{/logout}">Logout</a>
 </body>
 </html>

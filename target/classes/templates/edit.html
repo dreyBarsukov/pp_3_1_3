@@ -23,6 +23,16 @@
     <input type="text" th:field="*{email}"/>
     <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Name error</div>
     <br/>
+    <label>Select role:
+        <div class="checkbox-container"
+             th:each="role : ${roles}">
+            <input type="checkbox"
+                   th:name="ids"
+                   th:value="${role.getName()}"
+                   th:id="${'role'+role.getId()}"/>
+            <label th:for="${'role'+role.getId()}" th:text="${role.getName()}"></label>
+        </div>
+    </label>
     <input type="submit" value="update">
 </form>
 <a th:href="@{/logout}">Logout</a>
